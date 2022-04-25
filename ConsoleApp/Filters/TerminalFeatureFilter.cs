@@ -3,17 +3,18 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Microsoft.FeatureManagement;
 using Microsoft.FeatureManagement.FeatureFilters;
-using WebApi.Filters;
 
 namespace ConsoleApp.Filters;
 
 [FilterAlias("Terminal")]
 public class TerminalFeatureFilter : IContextualFeatureFilter<TerminalContext>
 {
+    private readonly IOptions<TargetingEvaluationOptions> _options;
     private readonly ILogger<TerminalFeatureFilter> _logger;
 
     public TerminalFeatureFilter(IOptions<TargetingEvaluationOptions> options, ILogger<TerminalFeatureFilter> logger)
     {
+        _options = options ?? throw new ArgumentNullException(nameof(options));
         _logger = logger ?? throw new ArgumentNullException(nameof(logger));
     }
 

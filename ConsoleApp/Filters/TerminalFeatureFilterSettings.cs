@@ -1,4 +1,4 @@
-﻿namespace WebApi.Filters;
+﻿namespace ConsoleApp.Filters;
 
 public class TerminalFeatureFilterSettings
 {
